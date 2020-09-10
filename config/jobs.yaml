@@ -1,19 +1,16 @@
 jobs:
   - script: >
-      pipelineJob('seed-dsl') {
-          definition {
-              triggers {
-                  cron('H/5 * * * *')
-              }
-              cpsScm {
-                  scm {
-                    git {
-                        remote { url 'https://github.com/pi-unnerup/jenkins.git' }
-                        branch '*/master'
-                        extensions {}
-                    }
-                  }
-                  scriptPath 'Jenkinsfile'
-              }
+      job('Job_DSL_Seed') {
+        scm {
+          git {
+            remote {
+              url 'https://github.com/pi-unnerup/jenkins.git'
+            }
           }
+        }
+        steps {
+          jobDsl {
+            targets 'dsl.groovy'
+          }
+        }
       }

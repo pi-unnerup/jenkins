@@ -1,5 +1,3 @@
-env = System.getenv()
-
 // projects
 
 def projects = [
